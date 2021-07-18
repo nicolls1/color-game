@@ -10,7 +10,13 @@ interface Props {
 const PlayersJoining: React.FC<Props> = ({ game }) => {
   const nextRoundMutation = useNextRoundMutation()
   return (
-    <Stack direction="column" spacing={5}>
+    <Stack
+      direction="column"
+      spacing={5}
+      minH="100vh"
+      justify="center"
+      align="center"
+    >
       <Text>Waiting for people to join...</Text>
       <Text>Current Players:</Text>
       {game!.players &&

@@ -10,15 +10,13 @@ interface Props {
 
 const GameOver: React.FC<Props> = ({ game }) => {
   const resetGameMutation = useResetGameMutation()
-  const places = game.players.sort((a, b) => a.points - b.points)
-
-  console.log('places', places)
+  const places = game.players.sort((a, b) => b.points - a.points)
 
   return (
     <Stack direction="column" justify="center" align="center" h="100vh">
       <Text>The winner is: </Text>
       {places.map((player, idx) => (
-        <Text>
+        <Text key={idx}>
           {idx + 1} {player.name}: {player.points}
         </Text>
       ))}

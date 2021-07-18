@@ -1,7 +1,8 @@
 import { Button } from '@chakra-ui/button'
 import { Checkbox, CheckboxGroup } from '@chakra-ui/checkbox'
-import { Box, Stack, Text } from '@chakra-ui/layout'
-import { useSendAnswerMutation } from 'hooks/Game'
+import { Stack, Text } from '@chakra-ui/layout'
+import { CircularProgress, CircularProgressLabel } from '@chakra-ui/progress'
+import { useRoundTimeUsed, useSendAnswerMutation } from 'hooks/Game'
 import { useState } from 'react'
 
 import { COLORS, Game } from 'types/Game'
@@ -14,14 +15,22 @@ interface Props {
 const PlayerAnswering: React.FC<Props> = ({ game, playerIndex }) => {
   const currentRound = game!.rounds[game!.roundsCompleted]
   const [checkedValues, setCheckedValues] = useState<COLORS[]>([])
-
   const sendAnswerMutation = useSendAnswerMutation()
+  const timeUsed = useRoundTimeUsed(game)
 
   return (
-    <Box>
-      Game
+    <Stack
+      direction="column"
+      spacing={5}
+      minH="100vh"
+      justify="center"
+      align="center"
+    >
       <Text>Question: {currentRound.question.question}</Text>
-      <Text>Create Time: {currentRound.createTime.toLocaleString()}</Text>
+      <CircularProgress max={60} min={0} value={timeUsed}>
+        <CircularProgressLabel>{60 - timeUsed}</CircularProgressLabel>
+      </CircularProgress>
+      {currentRound.createTime.toLocaleString()}
       <CheckboxGroup
         onChange={(value) => setCheckedValues(value as COLORS[])}
         value={checkedValues}
@@ -46,7 +55,7 @@ const PlayerAnswering: React.FC<Props> = ({ game, playerIndex }) => {
       >
         Submit
       </Button>
-    </Box>
+    </Stack>
   )
 }
 export default PlayerAnswering

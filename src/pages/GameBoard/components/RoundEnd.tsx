@@ -15,7 +15,6 @@ const RoundEnd: React.FC<Props> = ({ game }) => {
   return (
     <Stack diretion="column" justify="center" align="center" h="100vh">
       <Text>Round Finished.</Text>
-
       <Text>Player Answers:</Text>
       {game.players.map((player, idx) => (
         <Stack key={`${player.name}${idx}`} direction="row" align="center">
@@ -29,7 +28,9 @@ const RoundEnd: React.FC<Props> = ({ game }) => {
           )}
           <Text>
             {player.name}:{' '}
-            {game.rounds[game.roundsCompleted - 1].answers[idx].join(', ')}
+            {game.rounds[game.roundsCompleted - 1].answers[idx]
+              ? game.rounds[game.roundsCompleted - 1].answers[idx].join(', ')
+              : '-'}
           </Text>
         </Stack>
       ))}

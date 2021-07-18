@@ -154,14 +154,6 @@ const FirebaseService = {
     return game.players.length
   },
   nextRound: async (game: Game, question: Question) => {
-    console.log('before', [
-      ...game.rounds,
-      {
-        createTime: firebase.firestore.Timestamp.now(),
-        question,
-        answers: {},
-      },
-    ])
     await db.games.doc(game.id).update({
       roundsCompleted: game.roundsCompleted === -1 ? 0 : game.roundsCompleted,
       docVersion: game.docVersion + 1,
@@ -203,16 +195,12 @@ const FirebaseService = {
   endRound: async (game: Game) => {
     const roundsAnswers = game.rounds[game.roundsCompleted].question.answer
     const playerAnswers = game.rounds[game.roundsCompleted].answers
-    const correctPlayers = Object.keys(playerAnswers).map((key) => {
-      return answersMatch(
-        playerAnswers[key as unknown as number],
-        roundsAnswers
-      )
-    })
-    const incorrectCount = correctPlayers.reduce(
-      (sum, value) => (value === false ? sum + 1 : sum),
-      0
+    const correctPlayers = Object.keys(playerAnswers).map((key) =>
+      answersMatch(playerAnswers[key as unknown as number], roundsAnswers)
     )
+    const incorrectCount =
+      game.players.length -
+      correctPlayers.reduce((sum, value) => (value === true ? sum + 1 : sum), 0)
     await db.games.doc(game.id).update({
       docVersion: game.docVersion + 1,
       roundsCompleted: game.roundsCompleted + 1,
