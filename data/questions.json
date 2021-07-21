@@ -1,6 +1,74 @@
 [
   {
-    "question": "What are the colors of the 4 Harry Potter houses?",
+    "question": "The 4 Harry Potter houses",
     "answer": ["red", "blue", "green", "yellow"]
+  },
+  {
+    "question": "Russia's flag",
+    "answer": ["red", "white", "blue"]
+  },
+  {
+    "question": "Brazil's flag",
+    "answer": ["blue", "yellow", "green", "white"]
+  },
+  {
+    "question": "Canada's flag",
+    "answer": ["red", "white"]
+  },
+  {
+    "question": "Ukraine's flag",
+    "answer": ["blue", "yellow"]
+  },
+  {
+    "question": "Jamaica'a flag",
+    "answer": ["black", "yellow", "green"]
+  },
+  {
+    "question": "Italy's flag",
+    "answer": ["green", "white", "red"]
+  },
+  {
+    "question": "Japan's flag",
+    "answer": ["red", "white"]
+  },
+  {
+    "question": "Ireland's flag",
+    "answer": ["green", "white", "orange"]
+  },
+  {
+    "question": "Germany's flag",
+    "answer": ["black", "red", "yellow"]
+  },
+  {
+    "question": "Argentina's flag",
+    "answer": ["blue", "white", "yellow"]
+  },
+  {
+    "question": "Austria's flag",
+    "answer": ["red", "white"]
+  },
+  {
+    "question": "Google's logo",
+    "answer": ["blue", "red", "yellow", "green"]
+  },
+  {
+    "question": "Stimulate hunger",
+    "answer": ["red", "yellow"]
+  },
+  {
+    "question": "Olympic Flag rings",
+    "answer": ["black", "blue", "red", "yellow", "green"]
+  },
+  {
+    "question": "In a rainbow",
+    "answer": ["red", "orange", "yellow", "green", "blue", "purple"]
+  },
+  {
+    "question": "United Nations official colors",
+    "answer": ["blue", "white"]
+  },
+  {
+    "question": "Combined make green",
+    "answer": ["blue", "yellow"]
   }
 ]
