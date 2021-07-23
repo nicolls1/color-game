@@ -19,5 +19,4 @@ jobs:
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
       - run: |
-          export GOOGLE_APPLICATION_CREDENTIALS=${{ secrets.FIREBASE_SERVICE_ACCOUNT_COLOR_GAME_1D4BF }}
-          /usr/local/bin/npx firebase-tools deploy --only firestore
+          /usr/local/bin/npx firebase-tools deploy --only firestore --token=${{FIREBASE_DEPLOY_TOKEN}}
