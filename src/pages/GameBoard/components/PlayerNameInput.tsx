@@ -1,10 +1,11 @@
 import { useState } from 'react'
 
-import { Game } from 'types/Game'
-import { useJoinGameMutation, useCreateGameMutation } from 'hooks/Game'
+import { Game } from 'types/game'
+import { useJoinGameMutation, useCreateGameMutation } from 'hooks/game'
 import { Heading, Stack } from '@chakra-ui/layout'
 import { Input } from '@chakra-ui/input'
 import { Button } from '@chakra-ui/button'
+import { FormControl, FormErrorMessage } from '@chakra-ui/form-control'
 
 interface PlayerNameInputProps {
   gameId: string
@@ -18,18 +19,20 @@ const PlayerNameInput: React.FC<PlayerNameInputProps> = ({
   onSetPlayer,
 }) => {
   const [name, setName] = useState('')
+  const [nameError, setNameError] = useState<string>()
 
   const createGameMutation = useCreateGameMutation()
   const joinGameMutation = useJoinGameMutation()
 
   return (
-    <Stack direction="column" h="100vh" m={5} justify="center" align="center">
+    <Stack direction="column" h="100vh" p={5} justify="center" align="center">
       <Heading size="md">Player Name</Heading>
-      <Input
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        maxW="400px"
-      />
+
+      <FormControl isInvalid={!!nameError} maxW="400px">
+        <Input value={name} onChange={(e) => setName(e.target.value)} />
+        <FormErrorMessage>{nameError}</FormErrorMessage>
+      </FormControl>
+
       <Button
         onClick={async () => {
           if (game === undefined) {
@@ -39,6 +42,15 @@ const PlayerNameInput: React.FC<PlayerNameInputProps> = ({
             })
             onSetPlayer(0)
           } else {
+            console.log(
+              'name',
+              name,
+              game.players.map((player) => player.name)
+            )
+            if (game.players.map((player) => player.name).includes(name)) {
+              setNameError('Name has been taken')
+              return
+            }
             onSetPlayer(
               await joinGameMutation.mutateAsync({
                 game: game as Game,

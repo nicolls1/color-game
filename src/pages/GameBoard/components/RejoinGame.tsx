@@ -1,6 +1,7 @@
 import { Button } from '@chakra-ui/button'
 import { Stack, Text } from '@chakra-ui/layout'
-import { Game } from 'types/Game'
+import { MAX_PLAYERS } from 'ts/siteConstants'
+import { Game } from 'types/game'
 
 interface Props {
   game: Game
@@ -15,8 +16,13 @@ const RejoinGame: React.FC<Props> = ({ game, onSetPlayer }) => {
       justify="cneter"
       align="center"
       h="100vh"
+      p={5}
     >
-      <Text>Game has already started</Text>
+      {game!.players.length >= MAX_PLAYERS && game.roundsCompleted === -1 ? (
+        <Text>Game is full.</Text>
+      ) : (
+        <Text>Game has already started.</Text>
+      )}
       <Text>Rejoin as:</Text>
       {game.players.map((player, idx) => (
         <Button

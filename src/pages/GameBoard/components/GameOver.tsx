@@ -1,8 +1,8 @@
 import { Button } from '@chakra-ui/button'
 import { Stack, Text } from '@chakra-ui/layout'
 
-import { useResetGameMutation } from 'hooks/Game'
-import { Game } from 'types/Game'
+import { useResetGameMutation } from 'hooks/game'
+import { Game } from 'types/game'
 
 interface Props {
   game: Game
@@ -13,8 +13,8 @@ const GameOver: React.FC<Props> = ({ game }) => {
   const places = game.players.sort((a, b) => b.points - a.points)
 
   return (
-    <Stack direction="column" justify="center" align="center" h="100vh">
-      <Text>The winner is: </Text>
+    <Stack direction="column" justify="center" align="center" h="100vh" p={5}>
+      <Text>The winner is:</Text>
       {places.map((player, idx) => (
         <Text key={idx}>
           {idx + 1} {player.name}: {player.points}

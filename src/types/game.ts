@@ -27,6 +27,10 @@ export interface Round {
   answers: Record<number, COLORS[]>
 }
 
+export interface QuestionsMeta {
+  length: number
+}
+
 export interface Question {
   id: string
   question: string

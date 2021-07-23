@@ -1,6 +1,6 @@
 import { Switch, Route, Redirect } from 'react-router-dom'
 
-import { ROUTES } from 'siteConstants'
+import { ROUTES } from 'ts/siteConstants'
 import GameBoard from 'pages/GameBoard/GameBoard'
 import Home from 'pages/Home/Home'
 

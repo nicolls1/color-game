@@ -1,46 +1,64 @@
-# Getting Started with Create React App
+# The Color Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A color trivia quiz game
 
-## Available Scripts
+Game can be found live here: https://color-game-1d4bf.web.app/
 
-In the project directory, you can run:
+## Under active development
 
-### `yarn start`
+The Color Game is sadly lacking color at the moment. Also, there are only 18
+questions. Color and more questions are soon to come!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## How to play
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Create a game room by giving it a name then share it with friends. Start the
+game once everyone has joined. Pick the colors that are the answer to the
+prompt. Players get a point for every player that answers incorrectly so if all
+players are correct no points are given. For 2 players, 10 points wins the game
+or for 3-4 players 15 points wins the game.
 
-### `yarn test`
+## How it was built
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A react app bundled with create-react-app and deployed with firebase. ChakraUI
+used for components and react-query used for fetching. Visual testing with
+Storybook and Chromatic. An MVP implmentation as game rules are enforced client
+side and cheating is possible from a mailicious actor but its just a game for
+fun :). I believe that cloud functions would be required to have a fully secure
+implementation with firestore rules but I'd have to think about it more and take
+a second stab at it.
 
-### `yarn build`
+Happy to discuss and have feedback!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Running locally
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+With the firebase emulators installed
+(https://firebase.google.com/docs/rules/emulator-setup):
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+firebase emulators:start --only firestore
+```
 
-### `yarn eject`
+With yarn installed, the code can be bundled with:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+yarn
+yarn start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+With node installed, populate the questions in the local emulator with:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+node system/populateQuestions.js
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Running storybook locally:
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Future feature TODOs
+
+- Prefer to have the game creator advance game state
+- Cache questions seen in local storage to reduce question duplicates across
+  games

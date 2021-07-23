@@ -1,8 +1,10 @@
 import { Stack, Text } from '@chakra-ui/layout'
-import { useEndRoundMutation, useRoundTimeUsed } from 'hooks/Game'
+import { CircularProgress, CircularProgressLabel } from '@chakra-ui/progress'
+import { useEndRoundMutation, useRoundTimeUsed } from 'hooks/game'
 import { useEffect, useState } from 'react'
+import { ROUND_TIME } from 'ts/siteConstants'
 
-import { Game } from 'types/Game'
+import { Game } from 'types/game'
 
 interface Props {
   game: Game
@@ -12,7 +14,7 @@ const WaitingForOthers: React.FC<Props> = ({ game }) => {
   const currentRound = game!.rounds[game!.roundsCompleted]
   const endRoundMutation = useEndRoundMutation()
   const [hasEndedRound, setHasEndedRound] = useState(false)
-  useRoundTimeUsed(game)
+  const timeUsed = useRoundTimeUsed(game)
 
   useEffect(() => {
     if (
@@ -31,8 +33,12 @@ const WaitingForOthers: React.FC<Props> = ({ game }) => {
       justify="center"
       align="center"
       minH="100vh"
+      p={5}
     >
       <Text>Waiting for others</Text>
+      <CircularProgress max={60} min={0} value={timeUsed}>
+        <CircularProgressLabel>{ROUND_TIME - timeUsed}</CircularProgressLabel>
+      </CircularProgress>
       <Text>Has answered:</Text>
       {Object.keys(currentRound.answers).map((submittedIndexes) => (
         <Text key={submittedIndexes}>

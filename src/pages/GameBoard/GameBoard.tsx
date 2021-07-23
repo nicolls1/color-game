@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { Center } from '@chakra-ui/layout'
 import { useHistory, useRouteMatch } from 'react-router'
 
-import { useGame } from 'hooks/Game'
-import { ROUTES } from 'siteConstants'
-import { Game } from 'types/Game'
+import { useGame } from 'hooks/game'
+import { MAX_PLAYERS, ROUTES } from 'ts/siteConstants'
+import { Game } from 'types/game'
 import PlayersJoining from './components/PlayersJoining'
 import PlayerAnswering from './components/PlayerAnswering'
 import WaitingForOthers from './components/WaitingForOthers'
@@ -14,7 +14,6 @@ import RejoinGame from './components/RejoinGame'
 import { CircularProgress } from '@chakra-ui/progress'
 import PlayerNameInput from './components/PlayerNameInput'
 
-const MAX_PLAYERS = 4
 const POINTS_NEEDED_TO_WIN: Record<number, number> = {
   2: 10,
   3: 15,
@@ -52,16 +51,17 @@ const GameBoard: React.FC = () => {
   }
 
   if ((game === undefined && !isLoadingGame) || (game && playerIndex === -1)) {
-    if (game && game!.roundsCompleted >= 0 && playerIndex === -1) {
+    if (
+      game &&
+      ((game!.roundsCompleted >= 0 && playerIndex === -1) ||
+        (game!.roundsCompleted === -1 && game!.players.length >= MAX_PLAYERS))
+    ) {
       return (
         <RejoinGame
           game={game}
           onSetPlayer={(index) => setPlayerIndex(index)}
         />
       )
-    }
-    if (game && game!.players.length >= MAX_PLAYERS) {
-      return <Center h="100vh">Game is full</Center>
     }
     return (
       <PlayerNameInput

@@ -1,20 +1,27 @@
 import { Button } from '@chakra-ui/button'
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons'
 import { Stack, Text } from '@chakra-ui/layout'
-import { useNextRoundMutation } from 'hooks/Game'
+import { useNextRoundMutation } from 'hooks/game'
 import { answersMatch } from 'ts/utils'
 
-import { Game } from 'types/Game'
+import { Game } from 'types/game'
 
 interface Props {
   game: Game
 }
 
 const RoundEnd: React.FC<Props> = ({ game }) => {
+  const currentRound = game!.rounds[game!.roundsCompleted - 1]
   const nextRoundMutation = useNextRoundMutation()
   return (
-    <Stack diretion="column" justify="center" align="center" h="100vh">
-      <Text>Round Finished.</Text>
+    <Stack diretion="column" justify="center" align="center" h="100vh" p={5}>
+      <Text>{currentRound.question.question}</Text>
+      <Text>
+        choose <b>{currentRound.question.answer.length}</b> colors
+      </Text>
+
+      <Text>Answer: {currentRound.question.answer.join(', ')}</Text>
+
       <Text>Player Answers:</Text>
       {game.players.map((player, idx) => (
         <Stack key={`${player.name}${idx}`} direction="row" align="center">

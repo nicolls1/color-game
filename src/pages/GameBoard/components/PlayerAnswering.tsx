@@ -2,10 +2,11 @@ import { Button } from '@chakra-ui/button'
 import { Checkbox, CheckboxGroup } from '@chakra-ui/checkbox'
 import { Stack, Text } from '@chakra-ui/layout'
 import { CircularProgress, CircularProgressLabel } from '@chakra-ui/progress'
-import { useRoundTimeUsed, useSendAnswerMutation } from 'hooks/Game'
+import { useRoundTimeUsed, useSendAnswerMutation } from 'hooks/game'
 import { useState } from 'react'
+import { ROUND_TIME } from 'ts/siteConstants'
 
-import { COLORS, Game } from 'types/Game'
+import { COLORS, Game } from 'types/game'
 
 interface Props {
   game: Game
@@ -25,19 +26,21 @@ const PlayerAnswering: React.FC<Props> = ({ game, playerIndex }) => {
       minH="100vh"
       justify="center"
       align="center"
+      p={5}
     >
-      <Text>Question: {currentRound.question.question}</Text>
+      <Text>{currentRound.question.question}</Text>
+      <Text>
+        choose <b>{currentRound.question.answer.length}</b> colors
+      </Text>
       <CircularProgress max={60} min={0} value={timeUsed}>
-        <CircularProgressLabel>{60 - timeUsed}</CircularProgressLabel>
+        <CircularProgressLabel>{ROUND_TIME - timeUsed}</CircularProgressLabel>
       </CircularProgress>
-      {currentRound.createTime.toLocaleString()}
       <CheckboxGroup
         onChange={(value) => setCheckedValues(value as COLORS[])}
         value={checkedValues}
       >
         <Stack direction="column">
           {Object.keys(COLORS).map((key, idx) => (
-            //console.log('k', key, Object.values(COLORS)[idx])
             <Checkbox key={key} value={key.toLowerCase()} w="fit-content">
               {key.toLowerCase()}
             </Checkbox>

@@ -6,8 +6,8 @@ import { BrowserRouter as Router } from 'react-router-dom'
 //import reportWebVitals from './reportWebVitals';
 
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
-import theme from 'theme'
-import queryClient from 'queryClient'
+import theme from 'ts/theme'
+import queryClient from 'ts/queryClient'
 import { QueryClientProvider } from 'react-query'
 
 ReactDOM.render(

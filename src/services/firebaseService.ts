@@ -2,7 +2,7 @@ import firebase from 'firebase/app'
 
 import 'firebase/firestore'
 import { answersMatch } from 'ts/utils'
-import { COLORS, Game, Question } from 'types/Game'
+import { COLORS, Game, Question, QuestionsMeta } from 'types/game'
 
 var firebaseConfig = {
   apiKey: 'AIzaSyDABWq42QVaaw8YDFbGC8BWlZczbKPHfCI',
@@ -212,9 +212,21 @@ const FirebaseService = {
       })),
     })
   },
-  getQuestion: async (seenQuestionIds?: string[]) => {
-    const questionDoc = await db.questions.doc('bev91bDD4FPd66UB01uR').get()
+  getQuestion: async (questionCount: number, seenQuestionIds?: string[]) => {
+    let questionIds = [...Array(questionCount).keys()].map((idx) =>
+      idx.toString()
+    )
+    if (seenQuestionIds) {
+      questionIds = questionIds.filter((idx) => !seenQuestionIds.includes(idx))
+    }
+    const questionId =
+      questionIds[Math.floor(Math.random() * questionIds.length)]
+    const questionDoc = await db.questions.doc(questionId).get()
     return questionDoc.data()
+  },
+  getQuestionCount: async () => {
+    const countDoc = await db.questions.doc('meta').get()
+    return (countDoc.data() as unknown as QuestionsMeta).length
   },
   resetGame: async (game: Game) => {
     await db.games.doc(game.id).delete()

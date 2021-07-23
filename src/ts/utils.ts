@@ -1,4 +1,4 @@
-import { COLORS } from 'types/Game'
+import { COLORS } from 'types/game'
 
 export const answersMatch = (
   guessColors: COLORS[],
