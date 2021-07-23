@@ -19,4 +19,4 @@ jobs:
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
       - run: |
-          /usr/local/bin/npx firebase-tools deploy --only firestore --token=${{FIREBASE_DEPLOY_TOKEN}}
+          /usr/local/bin/npx firebase-tools deploy --only firestore --token=${{ secrets.FIREBASE_DEPLOY_TOKEN }}
