@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import randomWords from 'random-words'
 
-import { Box, Heading, Stack, Text } from '@chakra-ui/layout'
+import { Heading, Stack, Text } from '@chakra-ui/layout'
 import { Button } from '@chakra-ui/button'
 import {
   Input,
