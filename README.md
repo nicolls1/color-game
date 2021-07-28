@@ -54,11 +54,10 @@ node system/populateQuestions.js
 Running storybook locally:
 
 ```
-
+STORYBOOK_MOCK_API=true yarn storybook
 ```
 
-### Future feature TODOs
+#### Env Variables
 
-- Prefer to have the game creator advance game state
-- Cache questions seen in local storage to reduce question duplicates across
-  games
+- REACT_APP_MOCK_API or STORYBOOK_MOCK_API: Set to 'true' to use the mock API
+  instead of the firebase API

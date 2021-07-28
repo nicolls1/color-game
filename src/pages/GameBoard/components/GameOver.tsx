@@ -17,7 +17,7 @@ const GameOver: React.FC<Props> = ({ game }) => {
       <Text>The winner is:</Text>
       {places.map((player, idx) => (
         <Text key={idx}>
-          {idx + 1} {player.name}: {player.points}
+          <b>{idx + 1}.</b> {player.name}: {player.points}
         </Text>
       ))}
       <Button

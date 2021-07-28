@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Center } from '@chakra-ui/layout'
-import { useHistory, useRouteMatch } from 'react-router'
+import { Redirect, useRouteMatch } from 'react-router'
 
 import { useGame } from 'hooks/game'
 import { MAX_PLAYERS, ROUTES } from 'ts/siteConstants'
@@ -24,16 +24,21 @@ const POINTS_NEEDED_TO_WIN: Record<number, number> = {
   8: 25,
 }
 
-const GameBoard: React.FC = () => {
-  const history = useHistory()
+interface Props {
+  initialState?: {
+    playerIndex: number
+  }
+}
+
+const GameBoard: React.FC<Props> = ({ initialState = { playerIndex: -1 } }) => {
   const match = useRouteMatch<{ id: string }>(ROUTES.games)
   const gameId = match?.params.id
-  const [playerIndex, setPlayerIndex] = useState(-1)
-  if (!match) {
-    history.replace(ROUTES.home)
-  }
-  const { data: game, isLoading: isLoadingGame } = useGame(gameId)
+  const [playerIndex, setPlayerIndex] = useState(initialState.playerIndex)
+  const { data: game, isLoading: isLoadingGame, ...rest } = useGame(gameId)
 
+  if (!match) {
+    return <Redirect to={ROUTES.home} />
+  }
   if (isLoadingGame) {
     return (
       <Center h="100vh">

@@ -36,7 +36,7 @@ const WaitingForOthers: React.FC<Props> = ({ game }) => {
       p={5}
     >
       <Text>Waiting for others</Text>
-      <CircularProgress max={60} min={0} value={timeUsed}>
+      <CircularProgress max={ROUND_TIME} min={0} value={timeUsed}>
         <CircularProgressLabel>{ROUND_TIME - timeUsed}</CircularProgressLabel>
       </CircularProgress>
       <Text>Has answered:</Text>

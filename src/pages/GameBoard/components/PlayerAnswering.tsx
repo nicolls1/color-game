@@ -32,7 +32,7 @@ const PlayerAnswering: React.FC<Props> = ({ game, playerIndex }) => {
       <Text>
         choose <b>{currentRound.question.answer.length}</b> colors
       </Text>
-      <CircularProgress max={60} min={0} value={timeUsed}>
+      <CircularProgress max={ROUND_TIME} min={0} value={timeUsed}>
         <CircularProgressLabel>{ROUND_TIME - timeUsed}</CircularProgressLabel>
       </CircularProgress>
       <CheckboxGroup

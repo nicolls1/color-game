@@ -11,7 +11,7 @@ function App() {
         <GameBoard />
       </Route>
       <Route exact path={ROUTES.home}>
-        <Home />
+        <Home currentPage={window.location.href} />
       </Route>
       <Route path="*">
         <Redirect to={ROUTES.home} />

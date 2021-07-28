@@ -5,7 +5,7 @@ import App from './App'
 import { BrowserRouter as Router } from 'react-router-dom'
 //import reportWebVitals from './reportWebVitals';
 
-import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react'
 import theme from 'ts/theme'
 import queryClient from 'ts/queryClient'
 import { QueryClientProvider } from 'react-query'
@@ -13,7 +13,7 @@ import { QueryClientProvider } from 'react-query'
 ReactDOM.render(
   <QueryClientProvider client={queryClient}>
     <React.StrictMode>
-      <ChakraProvider theme={extendTheme(theme as any)}>
+      <ChakraProvider theme={theme}>
         <Router>
           <App />
         </Router>

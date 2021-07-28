@@ -10,7 +10,7 @@ var questions = require('./../data/questions.json')
 let firebase
 const LOCAL_EMULATOR = true
 if (LOCAL_EMULATOR) {
-  firebase = admin.initializeApp()
+  firebase = admin.initializeApp({ projectId: 'color-game-1d4bf' })
   firebase.firestore().settings({
     host: 'localhost:8081',
     ssl: false,

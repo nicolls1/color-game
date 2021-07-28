@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "color-game-1d4bf"
+  },
+  "targets": {
+    "color-game-1d4bf": {
+      "hosting": {
+        "color-game-storybook": [
+          "color-game-storybook"
+        ],
+        "color-game-1d4bf": [
+          "color-game-1d4bf"
+        ]
+      }
+    } 
   }
 }

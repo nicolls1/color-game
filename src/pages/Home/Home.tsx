@@ -13,12 +13,14 @@ import { generatePath, useHistory } from 'react-router'
 import { ROUTES } from 'ts/siteConstants'
 import { useClipboard } from '@chakra-ui/hooks'
 
-const Home: React.FC = () => {
+interface Props {
+  currentPage: string
+}
+
+const Home: React.FC<Props> = ({ currentPage }) => {
   const history = useHistory()
   const [roomName, setRoomName] = useState(`${randomWords()}-${randomWords()}`)
-  const { hasCopied, onCopy } = useClipboard(
-    `${window.location.href}games/${roomName}`
-  )
+  const { hasCopied, onCopy } = useClipboard(`${currentPage}games/${roomName}`)
   return (
     <>
       <Stack
@@ -31,7 +33,7 @@ const Home: React.FC = () => {
       >
         <Heading size="lg">The Color Game</Heading>
         <InputGroup maxW="xl">
-          <InputLeftAddon children={`${window.location.href}games/`} />
+          <InputLeftAddon children={`${currentPage}games/`} />
           <Input
             value={roomName}
             onChange={(e) => setRoomName(e.target.value)}

@@ -68,3 +68,4 @@ node_modules/
 .DS_Store
 build/
 color-game-key.json
+storybook-static/
