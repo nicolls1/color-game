@@ -6,13 +6,6 @@ import { ROUTES } from 'ts/siteConstants'
 export default {
   title: 'Page/GameBoard',
   component: GameBoard,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-    variant: {
-      options: ['link', 'outline', 'solid', 'ghost', 'unstyled'],
-      control: { type: 'radio' },
-    },
-  },
 } as ComponentMeta<typeof GameBoard>
 
 export const NoPlayersJoined = () => <GameBoard />

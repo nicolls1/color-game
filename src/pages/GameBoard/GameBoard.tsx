@@ -34,7 +34,7 @@ const GameBoard: React.FC<Props> = ({ initialState = { playerIndex: -1 } }) => {
   const match = useRouteMatch<{ id: string }>(ROUTES.games)
   const gameId = match?.params.id
   const [playerIndex, setPlayerIndex] = useState(initialState.playerIndex)
-  const { data: game, isLoading: isLoadingGame, ...rest } = useGame(gameId)
+  const { data: game, isLoading: isLoadingGame } = useGame(gameId)
 
   if (!match) {
     return <Redirect to={ROUTES.home} />
