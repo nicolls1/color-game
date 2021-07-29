@@ -11,15 +11,15 @@ import queryClient from 'ts/queryClient'
 import { QueryClientProvider } from 'react-query'
 
 ReactDOM.render(
-  <QueryClientProvider client={queryClient}>
-    <React.StrictMode>
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={theme}>
         <Router>
           <App />
         </Router>
       </ChakraProvider>
-    </React.StrictMode>
-  </QueryClientProvider>,
+    </QueryClientProvider>
+  </React.StrictMode>,
   document.getElementById('root')
 )
 

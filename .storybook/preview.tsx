@@ -35,8 +35,6 @@ export const parameters = {
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      enabled: false,
-      retry: 0,
       cacheTime: Infinity,
       staleTime: Infinity,
       refetchOnWindowFocus: false,

@@ -4,6 +4,8 @@ A color trivia quiz game
 
 Game can be found live here: https://color-game-1d4bf.web.app/
 
+Storybook can be found live here: https://color-game-storybook.web.app/
+
 ## Under active development
 
 The Color Game is sadly lacking color at the moment. Also, there are only 18
