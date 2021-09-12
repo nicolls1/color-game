@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
-//import FirebaseService from 'services/firebaseService'
 import api from 'services/api'
 
 import { COLORS, Game } from 'types/game'
@@ -46,7 +45,7 @@ export const useRoundTimeUsed = (game: Game) => {
     } else {
       setTimeUsed(ROUND_TIME)
     }
-  }, 1000)
+  }, 100)
 
   const endRoundMutation = useEndRoundMutation()
   if (

@@ -6,6 +6,7 @@ import {
   GlobalStyle,
 } from '@chakra-ui/react'
 import theme from '../src/ts/theme'
+import '../src/index.css'
 import { MemoryRouter } from 'react-router-dom'
 import { QueryClientProvider } from 'react-query'
 import { QueryClient } from 'react-query'

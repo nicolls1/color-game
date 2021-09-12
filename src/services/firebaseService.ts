@@ -22,7 +22,7 @@ try {
 if (process.env.NODE_ENV === 'development') {
   console.log('Using local firebase DB.')
   firebase.firestore().settings({
-    host: 'localhost:8081',
+    host: 'localhost:8082',
     ssl: false,
   })
 }

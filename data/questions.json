@@ -70,5 +70,125 @@
   {
     "question": "Combined make green",
     "answer": ["blue", "yellow"]
+  },
+  {
+    "question": "Olympic rings",
+    "answer": ["blue", "yellow", "black", "green", "red"]
+  },
+  {
+    "question": "Gloves of Cruella De Vil (Disney 1961)",
+    "answer": ["red"]
+  },
+  {
+    "question": "Sea between Turkey and Russia",
+    "answer": ["black"]
+  },
+  {
+    "question": "Marge Simpson’s dress",
+    "answer": ["green"]
+  },
+  {
+    "question": "Golden Gate Bridge",
+    "answer": ["red"]
+  },
+  {
+    "question": "Google logo",
+    "answer": ["red", "blue", "green", "yellow"]
+  },
+  {
+    "question": "Swords in Star Wars",
+    "answer": ["purple", "blue", "green", "red"]
+  },
+  {
+    "question": "Mr. Clean’s eyebrows",
+    "answer": ["white"]
+  },
+  {
+    "question": "Most common eye color",
+    "answer": ["brown"]
+  },
+  {
+    "question": "Charlie Brown’s t-shirt (The Peanuts)",
+    "answer": ["black", "yellow"]
+  },
+  {
+    "question": "Fur and eye color of albino rabbits",
+    "answer": ["red", "white"]
+  },
+  {
+    "question": "Curry",
+    "answer": ["red", "green", "yellow"]
+  },
+  {
+    "question": "Ted Mosby’s boots",
+    "answer": ["red"]
+  },
+  {
+    "question": "Dory in Finding Nemo",
+    "answer": ["black", "blue", "yellow"]
+  },
+  {
+    "question": "Hogwarts express",
+    "answer": ["red"]
+  },
+  {
+    "question": "Hat and jacket of Paddington bear",
+    "answer": ["blue", "red"]
+  },
+  {
+    "question": "Fairies in Sleeping Beauty (Disney 1959)",
+    "answer": ["red", "blue", "green"]
+  },
+  {
+    "question": "Logo of Domino’s Pizza",
+    "answer": ["red", "blue", "white"]
+  },
+  {
+    "question": "Nemo",
+    "answer": ["black", "orange", "white"]
+  },
+  {
+    "question": "Teletubbies",
+    "answer": ["green", "yellow", "red", "purple"]
+  },
+  {
+    "question": "Tennis courts of the grand-slam tournaments",
+    "answer": ["green", "blue", "red"]
+  },
+  {
+    "question": "Dartboard",
+    "answer": ["black", "green", "red", "white"]
+  },
+  {
+    "question": "Gandalf in Lord Of The Rings",
+    "answer": ["grey", "white"]
+  },
+  {
+    "question": "Classic M&M’s colors",
+    "answer": ["brown", "orange", "blue", "red", "green", "yellow"]
+  },
+  {
+    "question": "Asparagus",
+    "answer": ["green", "white", "purple"]
+  },
+  {
+    "question": "’Another Brick In The Wall’ is a Song of…",
+    "answer": ["pink"]
+  },
+  {
+    "question": "Pikachu’s cheeks",
+    "answer": ["red"]
+  },
+  {
+    "question": "Candy in Candy Crush",
+    "answer": ["red", "blue", "orange", "purple", "green", "yellow"]
+  },
+  {
+    "question": "Pepsi logo",
+    "answer": ["red", "blue", "white"]
+  },
+  {
+    "question": "Ikea logo",
+    "answer": ["blue", "yellow"]
   }
 ]

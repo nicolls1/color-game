@@ -12,7 +12,7 @@ const LOCAL_EMULATOR = true
 if (LOCAL_EMULATOR) {
   firebase = admin.initializeApp({ projectId: 'color-game-1d4bf' })
   firebase.firestore().settings({
-    host: 'localhost:8081',
+    host: 'localhost:8082',
     ssl: false,
   })
 } else {
