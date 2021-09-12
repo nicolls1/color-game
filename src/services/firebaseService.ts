@@ -1,7 +1,7 @@
 import firebase from 'firebase/app'
 
 import 'firebase/firestore'
-import { answersMatch } from 'ts/utils'
+import { calculateNewPoints } from 'ts/utils'
 import { COLORS, Game, Question, QuestionsMeta } from 'types/game'
 
 var firebaseConfig = {
@@ -193,22 +193,19 @@ const FirebaseService = {
     })
   },
   endRound: async (game: Game) => {
-    const roundsAnswers = game.rounds[game.roundsCompleted].question.answer
+    const roundAnswers = game.rounds[game.roundsCompleted].question.answer
     const playerAnswers = game.rounds[game.roundsCompleted].answers
-    const correctPlayers = Object.keys(playerAnswers).map((key) =>
-      answersMatch(playerAnswers[key as unknown as number], roundsAnswers)
+    const newPoints = calculateNewPoints(
+      game.players.length,
+      roundAnswers,
+      playerAnswers
     )
-    const incorrectCount =
-      game.players.length -
-      correctPlayers.reduce((sum, value) => (value === true ? sum + 1 : sum), 0)
     await db.games.doc(game.id).update({
       docVersion: game.docVersion + 1,
       roundsCompleted: game.roundsCompleted + 1,
       players: game.players.map((player, idx) => ({
         ...player,
-        points: correctPlayers[idx]
-          ? player.points + incorrectCount
-          : player.points,
+        points: player.points + newPoints[idx],
       })),
     })
   },

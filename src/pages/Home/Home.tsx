@@ -29,9 +29,9 @@ const Home: React.FC<Props> = ({ currentPage }) => {
         justify="center"
         align="center"
         h="50vh"
-        spacing={5}
+        spacing="45px"
       >
-        <Heading size="lg">The Color Game</Heading>
+        <Heading size="xl">The Color Game</Heading>
         <InputGroup maxW="xl">
           <InputLeftAddon children={`${currentPage}games/`} />
           <Input
@@ -60,8 +60,8 @@ const Home: React.FC<Props> = ({ currentPage }) => {
         align="center"
         spacing={5}
       >
-        <Heading size="md">How to Play</Heading>
-        <Text maxW="xl">
+        <Heading size="sm">How to Play</Heading>
+        <Text maxW="xl" textStyle="p">
           Create a room and share it. Up to 4 people can join a room. Once
           everyone has joined, start the game. Complete the prompts with the
           correct color(s) to win. Points are given out for every player that

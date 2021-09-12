@@ -19,11 +19,11 @@ const RejoinGame: React.FC<Props> = ({ game, onSetPlayer }) => {
       p={5}
     >
       {game!.players.length >= MAX_PLAYERS && game.roundsCompleted === -1 ? (
-        <Text>Game is full.</Text>
+        <Text textStyle="p">Game is full.</Text>
       ) : (
-        <Text>Game has already started.</Text>
+        <Text textStyle="p">Game has already started.</Text>
       )}
-      <Text>Rejoin as:</Text>
+      <Text textStyle="p">Rejoin as:</Text>
       {game.players.map((player, idx) => (
         <Button
           key={`${player.name}${idx}`}

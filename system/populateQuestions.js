@@ -32,7 +32,7 @@ const setQuestions = async () => {
       question
     )
   })
-  writer.create(firestore.collection('questions').doc('meta'), {
+  writer.update(firestore.collection('questions').doc('meta'), {
     length: questions.length,
   })
   await writer.close()

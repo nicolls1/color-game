@@ -25,11 +25,22 @@ const PlayerNameInput: React.FC<PlayerNameInputProps> = ({
   const joinGameMutation = useJoinGameMutation()
 
   return (
-    <Stack direction="column" h="100vh" p={5} justify="center" align="center">
-      <Heading size="md">Player Name</Heading>
+    <Stack
+      direction="column"
+      spacing="45px"
+      h="100vh"
+      p={5}
+      justify="center"
+      align="center"
+    >
+      <Heading size="sm">Player Name</Heading>
 
       <FormControl isInvalid={!!nameError} maxW="400px">
-        <Input value={name} onChange={(e) => setName(e.target.value)} />
+        <Input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          autoFocus
+        />
         <FormErrorMessage>{nameError}</FormErrorMessage>
       </FormControl>
 

@@ -10,3 +10,19 @@ export const answersMatch = (
     answers.every((value) => correctColors.includes(value))
   )
 }
+
+export const calculateNewPoints = (
+  playerCount: number,
+  roundAnswers: COLORS[],
+  playerAnswers: Record<number, COLORS[]>
+) => {
+  const correctPlayers = [...Array(playerCount).keys()].map(
+    (idx) =>
+      idx in playerAnswers &&
+      answersMatch(playerAnswers[idx as unknown as number], roundAnswers)
+  )
+  const incorrectCount =
+    playerCount -
+    correctPlayers.reduce((sum, value) => (value === true ? sum + 1 : sum), 0)
+  return correctPlayers.map((correct) => (correct ? incorrectCount : 0))
+}

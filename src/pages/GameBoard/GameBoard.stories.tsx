@@ -16,6 +16,12 @@ export const OnePlayerJoined = () => {
   return <GameBoard />
 }
 
+export const PlayerJoined = () => {
+  const history = useHistory()
+  history.replace(generatePath(ROUTES.games, { id: 'one-player-joined' }))
+  return <GameBoard initialState={{ playerIndex: 1 }} />
+}
+
 export const GameFull = () => {
   const history = useHistory()
   history.replace(generatePath(ROUTES.games, { id: 'game-full' }))

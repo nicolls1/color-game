@@ -1,8 +1,9 @@
 import { Button } from '@chakra-ui/button'
 import { useClipboard } from '@chakra-ui/hooks'
 import { Input, InputGroup, InputRightElement } from '@chakra-ui/input'
-import { Stack, Text } from '@chakra-ui/layout'
+import { Center, SimpleGrid, Stack, Text } from '@chakra-ui/layout'
 import { useNextRoundMutation } from 'hooks/game'
+import { MAX_PLAYERS } from 'ts/siteConstants'
 import { Game } from 'types/game'
 
 interface Props {
@@ -22,7 +23,9 @@ const PlayersJoining: React.FC<Props> = ({ game }) => {
       align="center"
       p={5}
     >
-      <Text>Waiting for people to join. Share the link below!</Text>
+      <Text textStyle="p">
+        Waiting for people to join. Share the link below!
+      </Text>
       <InputGroup maxW="xl">
         <Input pr="5.5rem" value={roomLocation} isReadOnly />
         <InputRightElement width="5.5rem">
@@ -31,11 +34,16 @@ const PlayersJoining: React.FC<Props> = ({ game }) => {
           </Button>
         </InputRightElement>
       </InputGroup>
-      <Text>Current Players:</Text>
-      {game!.players &&
-        game!.players.map((player, idx) => (
-          <Text key={`${idx}${player.name}`}>{player.name}</Text>
+      <SimpleGrid columns={2} spacing={5} w="full" maxW="xl">
+        {[...Array(MAX_PLAYERS).keys()].map((idx) => (
+          <Center key={idx} boxShadow="base" w="full" h="80px" borderRadius={5}>
+            {game!.players && idx < game!.players.length && (
+              <Text textStyle="p">{game!.players[idx].name}</Text>
+            )}
+          </Center>
         ))}
+      </SimpleGrid>
+
       <Button
         w="fit-content"
         onClick={() => nextRoundMutation.mutate({ game })}
