@@ -107,6 +107,7 @@ const MockService = {
             },
             answers: {
               0: ['red', 'white'],
+              1: ['red', 'white', 'blue', 'green', 'yellow', 'black'],
             },
           },
         ],

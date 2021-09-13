@@ -4,6 +4,7 @@ import {
   Box,
   Center,
   Divider,
+  Flex,
   Heading,
   SimpleGrid,
   Stack,
@@ -84,11 +85,17 @@ const RoundEnd: React.FC<Props> = ({ game }) => {
           align="center"
           w="full"
           spacing={5}
+          alignItems="center"
         >
           {game.players.map((player, idx) => (
             <Fragment key={`${player.name}${idx}`}>
               <Text textStyle="p">{player.name}</Text>
-              <Stack direction="row" spacing={2} justify="center">
+              <Flex
+                direction="row"
+                justify="center"
+                flexWrap="wrap"
+                style={{ gap: '8px' }}
+              >
                 {game.rounds[game.roundsCompleted - 1].answers[idx] !==
                 undefined ? (
                   game.rounds[game.roundsCompleted - 1].answers[idx].map(
@@ -107,7 +114,7 @@ const RoundEnd: React.FC<Props> = ({ game }) => {
                 ) : (
                   <Text textStyle="p">-</Text>
                 )}
-              </Stack>
+              </Flex>
               {answersMatch(
                 game.rounds[game.roundsCompleted - 1].answers[idx],
                 game.rounds[game.roundsCompleted - 1].question.answer
